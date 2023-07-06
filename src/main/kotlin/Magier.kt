@@ -1,6 +1,4 @@
-class Magier(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, damage, armor){
-    var shield = 0
-    var heal = 0
+class Magier:Held(name = "", hp = 0, damage = 0, armor = 0, shield = false){
 
     init {
         this.name = "Gandalf der Magier"
@@ -9,8 +7,9 @@ class Magier(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, damage
         this.armor = 40
     }
 
-    fun aktion(): Int{
+    override fun aktion(): Int{
         println("${this.name} ist an der Reihe!")
+        println("HP: ${this.hp} | Schild: ${this.shield}")
         while (true){
             println("""
             
@@ -22,7 +21,6 @@ class Magier(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, damage
             try{
                 val input = readln().toInt()
                 if (input !in 1 .. 4 && input != 5) throw Exception("")
-                this.heal = 0
 
                 when (input){
                     1 -> {
@@ -34,12 +32,11 @@ class Magier(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, damage
                         return this.damage
                     }
                     3 -> {
-                        this.heal = (50..100).random()
+                        this.hp += (50..100).random()
                         return 0
                     }
                     4 -> {
-                        this.shield = 0
-                        this.shield + 1
+                        this.shield = true
                         return 0
                     }
                 }

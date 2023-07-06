@@ -1,6 +1,5 @@
-class Berserker(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, damage, armor){
-    var shield = 0
-    var focus = 0
+class Berserker:Held(name = "", hp = 0, damage = 0, armor = 0, shield = false){
+    var focus = false
 
     init {
         this.name = "Bero der Berserker"
@@ -9,8 +8,9 @@ class Berserker(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, dam
         this.armor = 100
     }
 
-    fun aktion(): Int{
+    override fun aktion(): Int{
         println("${this.name} ist an der Reihe!")
+        println("HP: ${this.hp} | Schild: ${this.shield}")
         while (true){
             println("""
             
@@ -25,23 +25,19 @@ class Berserker(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, dam
 
                 when (input){
                     1 -> {
-                        this.damage += attack(input) + this.focus
-                        this.focus = 0
+                        this.damage += attack(input)
                         return this.damage
                     }
                     2 -> {
-                        this.damage += attack(input) + this.focus
-                        this.focus = 0
+                        this.damage += attack(input)
                         return this.damage
                     }
                     3 -> {
-                        this.focus = 0
-                        this.focus += 50
+                        this.focus = true
                         return 0
                     }
                     4 -> {
-                        this.shield = 0
-                        this.shield + 1
+                        this.shield = true
                         return 0
                     }
                 }
@@ -58,7 +54,21 @@ class Berserker(name:String, hp:Int, damage: Int, armor: Int):Held(name, hp, dam
     }
 
     override fun attack(angriff: Int): Int{
-        return if (angriff == 1) (50..90).random()
-        else (80..120).random()
+        if (this.focus){
+            if (angriff == 1){
+                this.focus = false
+                return (20..60).random() + 100
+            } else if (angriff == 2){
+                this.focus = false
+                return (40..90).random() + 100
+            }
+        } else {
+            if (angriff == 1){
+                return (20..60).random() + 100
+            } else if (angriff == 2){
+                return (40..90).random() + 100
+            }
+        }
+        return 0
     }
 }
