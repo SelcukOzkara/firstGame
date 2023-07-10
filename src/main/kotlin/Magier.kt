@@ -1,14 +1,14 @@
-class Magier:Held(name = "", hp = 0, damage = 0, armor = 0, shield = false){
+class Magier:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false){
 
     init {
         this.name = "Gandalf der Magier"
-        this.hp = 100
+        this.maxHp = 100
+        this.hp = maxHp
         this.damage = 0
-        this.armor = 40
     }
 
     override fun aktion(): Int{
-        println("${this.name} ist an der Reihe!")
+        println("\n${this.name} ist an der Reihe!")
         println("HP: ${this.hp} | Schild: ${this.shield}")
         while (true){
             println("""
@@ -16,11 +16,13 @@ class Magier:Held(name = "", hp = 0, damage = 0, armor = 0, shield = false){
             [1] Feuersturm          [2] Hagelschauer
             [3] Heilen              [4] Schild
             
+            [5] Beutel
+            
             Wählen Sie aus:
         """.trimIndent())
             try{
                 val input = readln().toInt()
-                if (input !in 1 .. 4 && input != 5) throw Exception("")
+                if (input !in 1 .. 5 ) throw Exception("")
 
                 when (input){
                     1 -> {
@@ -32,13 +34,13 @@ class Magier:Held(name = "", hp = 0, damage = 0, armor = 0, shield = false){
                         return this.damage
                     }
                     3 -> {
-                        this.hp += (50..100).random()
-                        return 0
+                        return -1
                     }
                     4 -> {
                         this.shield = true
                         return 0
                     }
+                    5 -> return -2
                 }
                 break
             }catch (e:Exception){
@@ -49,7 +51,7 @@ class Magier:Held(name = "", hp = 0, damage = 0, armor = 0, shield = false){
     }
 
     override fun toString(): String {
-        return "Magier | Name: ${this.name} HP: ${this.hp} Armor: ${this.armor}"
+        return "Magier | Name: ${this.name} HP: ${this.hp}"
     }
 
     override fun attack(angriff: Int): Int{

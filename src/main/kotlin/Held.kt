@@ -1,5 +1,6 @@
-open class Held(var name: String, var hp: Int, var damage: Int,var armor: Int, var shield: Boolean){
+import kotlin.math.max
 
+open class Held(var name: String,var maxHp: Int, var hp: Int, var damage: Int, var shield: Boolean, var isPoison: Boolean){
 
     open fun attack(angriff: Int): Int{
         return if (angriff == 1) (40..60).random()
@@ -12,6 +13,6 @@ open class Held(var name: String, var hp: Int, var damage: Int,var armor: Int, v
 
 
     override fun toString(): String {
-        return "Name: ${this.name} HP: ${this.hp} Armor: ${this.armor}"
+        return "Name: ${this.name} HP: ${this.hp}"
     }
 }
