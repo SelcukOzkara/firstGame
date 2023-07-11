@@ -9,15 +9,24 @@ class Berserker:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, is
     }
 
     override fun aktion(): Int{
-        println("\n${this.name} ist an der Reihe!")
-        println("HP: ${this.hp} | Schild: ${this.shield}")
         while (true){
             println("""
+                
+              ____                          _             
+             |  _ \                        | |            
+             | |_) | ___ _ __ ___  ___ _ __| | _____ _ __ 
+             |  _ < / _ \ '__/ __|/ _ \ '__| |/ / _ \ '__|
+             | |_) |  __/ |  \__ \  __/ |  |   <  __/ |   
+             |____/ \___|_|  |___/\___|_|  |_|\_\___|_|   
             
-            [1] Hieb                [2] Tausend Dolche
-            [3] Fokus               [4] Schild
-            
-            [5] Beutel
+             ${this.name}
+             HP: ${this.hp} | Schild: ${this.shield}
+        ┌────────────────────────────────────────────────┐      
+        │   [1] Hieb                [2] Tausend Dolche   │
+        │   [3] Fokus               [4] Schild           │
+        │                                                │
+        │   [5] Beutel                                   │
+        └────────────────────────────────────────────────┘
             
             Wählen Sie aus:
         """.trimIndent())

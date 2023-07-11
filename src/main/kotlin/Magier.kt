@@ -8,15 +8,25 @@ class Magier:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, isPoi
     }
 
     override fun aktion(): Int{
-        println("\n${this.name} ist an der Reihe!")
-        println("HP: ${this.hp} | Schild: ${this.shield}")
         while (true){
             println("""
-            
-            [1] Feuersturm          [2] Hagelschauer
-            [3] Heilen              [4] Schild
-            
-            [5] Beutel
+                
+              __  __             _           
+             |  \/  |           (_)          
+             | \  / | __ _  __ _ _  ___ _ __ 
+             | |\/| |/ _` |/ _` | |/ _ \ '__|
+             | |  | | (_| | (_| | |  __/ |   
+             |_|  |_|\__,_|\__, |_|\___|_|   
+                           __/ |            
+                          |___/  
+             ${this.name}
+             HP: ${this.hp} | Schild: ${this.shield}
+        ┌───────────────────────────────────────────────┐        
+        │   [1] Feuersturm          [2] Hagelschauer    │
+        │   [3] Heilen              [4] Schild          │
+        │                                               │
+        │   [5] Beutel                                  │
+        └───────────────────────────────────────────────┘    
             
             Wählen Sie aus:
         """.trimIndent())

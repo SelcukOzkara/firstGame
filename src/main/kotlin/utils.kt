@@ -98,6 +98,14 @@ fun createBeutel(): MutableList<Item> {
 
 fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon, minions: MutableList<Gegner>) {
     while (!death(myTeam, enemy)) {
+        println("\nIn deinem Team leben noch:")
+        for (i in myTeam){
+            if (i.hp > 0){
+                println("""
+                ${i.name} mit ${i.hp} HP
+            """.trimIndent())
+            }
+        }
         for (i in myTeam) {
             if (i.hp > 0 && enemy.hp > 0) {
                 checkPoison(i)
@@ -130,10 +138,21 @@ fun playerRound(
         var check = 0
         var attack = myTeam[myTeam.indexOf(i)].aktion()
         if (attack == -1) {
+            println("""
+                
+                ++++++++++++++++++++++++++++++++++++
+                ++++++++Alle wurden geheilt!++++++++
+            """.trimIndent())
             myTeam.forEach {
-                it.hp += 50
-                println("${it.name} wurde geheilt und hat nun ${it.hp} HP")
+                if (it.hp > 0){
+                    it.hp += 50
+                    println("${it.name} | ${it.hp} HP")
+                }
             }
+            println("""
+                ++++++++++++++++++++++++++++++++++++
+                
+            """.trimIndent())
             break
         } else if (attack == -2) {
             while (true) {
@@ -163,13 +182,18 @@ fun playerRound(
                         2 -> {
                             var toteHelden = mutableListOf<Held>()
                             for (j in myTeam) {
-                                if (j.hp == 0) toteHelden.add(j)
+                                if (j.hp <= 0) {
+                                    j.hp = 0
+                                    toteHelden.add(j)
+                                }
                             }
                             if (myBeutel[1].anzahl <= 0) throw Exception("Du hast keinen Trank mehr!")
                             if (toteHelden.isNotEmpty()) {
                                 toteHelden.forEach { println(it) }
                                 println("Welchen Helden möchtest du wiederbeleben? 1-${toteHelden.size}")
-                                toteHelden[readln().toInt() - 1].hp = 100
+                                val input = readln().toInt() - 1
+                                toteHelden[input].hp = 100
+                                toteHelden.removeAt(input)
                                 myBeutel[1].anzahl -= 1
                                 check = 1
                             } else println("Alle deine Helden leben noch!")
