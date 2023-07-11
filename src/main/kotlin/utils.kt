@@ -83,6 +83,33 @@ fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon
 
         if (!death(myTeam, enemy)) {
             while (true) {
+                if (enemy.minions){
+                    for (i in minions){
+                        val attack = i.attack()
+                        when (attack){
+                            1 ->{
+                                var held = myTeam.random()
+                                held.hp -= (5..8).random()
+                                println("${held.name} HP: ${held.hp}")
+                            }
+                            2 ->{
+                                var held = myTeam.random()
+                                held.hp -= (15..20).random()
+                                println("${held.name} HP: ${held.hp}")
+                            }
+                            3 -> {
+                                var held = myTeam.random()
+                                held.hp -= (30..38).random()
+                                println("${held.name} HP: ${held.hp}")
+                            }
+                            4 -> {
+                                var held = myTeam.random()
+                                held.hp -= 60
+                                println("${held.name} HP: ${held.hp}")
+                            }
+                        }
+                    }
+                }
                 val j = (0 until myTeam.size).random()
                 if (myTeam[j].hp > 0) {
                     if (myTeam[j].shield) {
@@ -90,7 +117,7 @@ fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon
                         println("${myTeam[j].name} hatte ein Schild!")
                         break
                     } else {
-                        var attack = enemy.attack()
+                        val attack = enemy.attack()
                         if (attack == -1) {
                             myTeam.forEach { it.hp -= (40..60).random()
                             println("${it.name} wurde getroffen! HP:${it.hp}")
@@ -182,21 +209,30 @@ fun playerRound(myTeam: MutableList<Held>,myBeutel: MutableList<Item>, enemy: Dr
 
         } else {
             if (enemy.minions){
-                for (i in minions){
-                    if (i.hp > 0){
-                        i.hp -= attack
-                        if (i.hp <= 0){
-                            i.hp = 0
-                        }
-                        println("${i.name} wurde angegriffen und hat noch ${i.hp}")
-                        minions.forEach { println(it) }
-                        if (minions[0].hp <= 0 && minions[1].hp <= 0 && minions[2].hp <= 0){
-                            enemy.minions = false
-                            break
-                        }
-                        break
-                    }
+                var c = 1
+                if (minions[0].hp == 0 && minions[1].hp == 0 && minions[2].hp == 0){
+                    break
                 }
+                for (j in minions){
+                    if (j.hp == 0){
+                      continue
+                    }
+                    if (j.hp > 0){
+                        j.hp -= attack
+                        if (j.hp <= 0){
+                            j.hp = 0
+                        }
+                        println("${j.name} wurde angegriffen und hat noch ${j.hp}")
+                        minions.forEach { print("|$c.${it.name} hat: ${it.hp}HP| ")
+                        c++}
+                        println()
+                    }
+                    if (minions[0].hp == 0 && minions[1].hp == 0 && minions[2].hp == 0){
+                        enemy.minions = false
+                    }
+                    break
+                }
+                break
             } else{
                 enemy.hp -= attack
                 if (enemy.hp < 0) enemy.hp = 0
@@ -204,6 +240,7 @@ fun playerRound(myTeam: MutableList<Held>,myBeutel: MutableList<Item>, enemy: Dr
                 break
             }
         }
+        break
     }
 }
 

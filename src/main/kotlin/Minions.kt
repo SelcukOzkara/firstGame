@@ -11,24 +11,23 @@ class Minions:Gegner(name = "", hp = 0) {
         var i = mutableListOf(1, 1, 1, 1, 2, 2, 2, 3, 3, 4)
         when (i.random()) {
             1 -> {
-                println("${this.name} führt den Angriff 'Schwarze Flamme' aus.")
-                return (40..120).random()
-            }
-
-            2 -> {
-                println("${this.name} führt den Angriff 'Felswurf' aus.")
-                return (50..60).random()
-            }
-
-            3 -> {
-                this.hp += (200..500).random()
-                println("${this.name} heilt sich und hat jetzt wieder ${this.hp} HP.")
+                println("${this.name} führt den Angriff 'Schubser' aus.")
                 return 1
             }
 
+            2 -> {
+                println("${this.name} führt den Angriff 'Stockschlag' aus.")
+                return 2
+            }
+
+            3 -> {
+                println("${this.name} führt den Angriff 'Peitsche' aus.")
+                return 3
+            }
+
             4 -> {
-                println("${this.name} führt den Angriff 'Eisatem' aus.")
-                return -1
+                println("${this.name} führt den Angriff 'Steinwurf' aus.")
+                return -4
             }
         }
         return 0

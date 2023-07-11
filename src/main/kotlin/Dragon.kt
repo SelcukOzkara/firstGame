@@ -1,15 +1,12 @@
 class Dragon: Gegner(name = "", hp = 100){
     var minions = false
+    var i = mutableListOf(1,1,1,1,2,2,2,2,3,3,3,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6)
     init {
         this.name = "Black Dragon"
         this.hp = 4000
     }
 
     override fun attack(): Int{
-        var i = mutableListOf(6)
-//        var i = mutableListOf(1,1,1,1,2,2,2,2,3,3,4,4,5,5,5,5,5,5,5,5,5,5,5,5,6)
-
-
         when (i.random()){
             1 -> {
                 println("${this.name} führt den Angriff 'Schwarze Flamme' aus.")
@@ -35,7 +32,7 @@ class Dragon: Gegner(name = "", hp = 100){
             6 -> {
                 this.minions = true
                 println("${this.name} hat drei Minions beschworen.")
-                i.remove(6)
+                i.removeAll { it == 6 }
                 return -3
             }
         }
