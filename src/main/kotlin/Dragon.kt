@@ -10,30 +10,28 @@ class Dragon: Gegner(name = "", hp = 100){
         when (i.random()){
             1 -> {
                 println("${this.name} führt den Angriff 'Schwarze Flamme' aus.")
-                return (40..120).random()
+                return 1
             }
             2 -> {
                 println("${this.name} führt den Angriff 'Felswurf' aus.")
-                return (50..60).random()
+                return 2
             }
             3 -> {
-                this.hp += (200..500).random()
-                println("${this.name} heilt sich und hat jetzt wieder ${this.hp} HP.")
-                return 0
+                return 3
             }
             4 -> {
                 println("${this.name} führt den Angriff 'Eisatem' aus.")
-                return -1
+                return 4
             }
             5 -> {
                 println("${this.name} führt den Angriff 'Giftwolke' aus.")
-                return -2
+                return 5
             }
             6 -> {
                 this.minions = true
                 println("${this.name} hat drei Minions beschworen.")
                 i.removeAll { it == 6 }
-                return -3
+                return 6
             }
         }
         return 0
