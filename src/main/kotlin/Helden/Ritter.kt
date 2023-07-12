@@ -1,5 +1,9 @@
 package Helden
 
+import Utils.cGreen
+import Utils.cRed
+import Utils.cReset
+
 class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
     var focus = false
 
@@ -22,7 +26,7 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
              | | \ \| | |_| ||  __/ |   
              |_|  \_\_|\__|\__\___|_|  
              ${this.name}
-             HP: ${this.hp} | Schild: ${this.shield}
+             HP: $cRed${this.hp}$cReset | Schild: ${this.shield}
         ┌──────────────────────────────────────────────┐    
         │   [1] Schwerthieb         [2] Spiralschlag   │
         │   [3] Fokus               [4] Schild         │
@@ -68,7 +72,7 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
     }
 
     override fun toString(): String {
-        return "Ritter | Name: ${this.name} HP: ${this.hp}"
+        return "Ritter | Name: ${this.name} HP: $cRed${this.hp}$cReset"
     }
 
     override fun attack(angriff: Int): Int {

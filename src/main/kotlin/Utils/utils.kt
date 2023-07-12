@@ -11,6 +11,10 @@ import Items.Heal
 import Items.Item
 import Items.Reviv
 
+var cReset = "\u001B[0m"
+var cRed = "\u001B[31m"
+var cGreen = "\u001B[32m"
+
 fun startText() {
     println(
         """
@@ -109,12 +113,12 @@ fun createBeutel(): MutableList<Item> {
 
 fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon, minions: MutableList<Gegner>) {
     while (!death(myTeam, enemy)) {
-        println("\nIn deinem Team leben noch:")
+        println("\n${cGreen}In deinem Team leben noch:$cReset")
         for (i in myTeam) {
             if (i.hp > 0) {
                 println(
                     """
-                ${i.name} mit ${i.hp} HP
+                ${i.name} mit $cRed${i.hp}$cReset HP
             """.trimIndent()
                 )
             }
@@ -154,24 +158,24 @@ fun playerRound(
             println(
                 """
                 
-                ++++++++++++++++++++++++++++++++++++
-                ++++++++Alle wurden geheilt!++++++++
+                $cGreen++++++++++++++++++++++++++++++++++++
+                ++++++++++++++++++Heilung...+++++++++++++++$cReset
             """.trimIndent()
             )
             myTeam.forEach {
                 if (it.hp > 0) {
                     if (it.hp < it.maxHp){
-                        it.hp += 50
+                        it.hp += 35
                         if (it.hp > it.maxHp){
                             it.hp = it.maxHp
                         }
-                        println("${it.name} | ${it.hp} HP")
+                        println("${it.name} | $cRed${it.hp}$cReset HP")
                     }
                 }
             }
             println(
                 """
-                ++++++++++++++++++++++++++++++++++++
+                $cGreen++++++++++++++++++++++++++++++++++++$cReset
                 
             """.trimIndent()
             )
@@ -234,7 +238,7 @@ fun playerRound(
                     }
                     break
                 } catch (e: Exception) {
-                    println("Bitte wähle ein Items.Item aus")
+                    println("Bitte wähle ein Item aus")
                 }
             }
             if (check == 1) break
@@ -257,14 +261,17 @@ fun playerRound(
                         }
                         println("""
                             
-                            ${j.name} wurde angegriffen und hat noch ${j.hp}
-                        ┌─────────────────────────────────────────────────────────────┐ 
+                            ${j.name} wurde angegriffen und hat noch $cRed${j.hp}$cReset
+                        
                         """.trimIndent())
                         minions.forEach {
-                            print("  |$c.${it.name} hat: ${it.hp}HP| ")
+                            println("""
+                                (ง ͠ ᵒ̌ Дᵒ̌ )▬▬ι═══════ﺤ
+                                |$c.${it.name} hat: $cRed${it.hp}$cReset HP|
+                                
+                            """.trimIndent())
                             c++
                         }
-                        println("\n└─────────────────────────────────────────────────────────────┘")
                     }
                     if (minions[0].hp == 0 && minions[1].hp == 0 && minions[2].hp == 0) {
                         enemy.minions = false
@@ -275,7 +282,7 @@ fun playerRound(
             } else {
                 enemy.hp -= attack
                 if (enemy.hp < 0) enemy.hp = 0
-                println("${enemy.name} hat Schaden erlitten! HP:${enemy.hp}")
+                println("${enemy.name} hat Schaden erlitten! HP:$cRed${enemy.hp}$cReset")
                 break
             }
         }
@@ -295,12 +302,12 @@ fun death(myTeam: MutableList<Held>, enemy: Dragon): Boolean {
         }
 
     if (enemy.hp <= 0) {
-        println("\nDu hast ${enemy.name} vernichtet! Herzlichen Glückwunsch!")
+        println("\n${cGreen}Du hast ${enemy.name} vernichtet! Herzlichen Glückwunsch!$cReset")
         return true
     }
 
     if (dCount == 3) {
-        println("\n${enemy.name} hat dein Team vernichtet!")
+        println("\n$cRed${enemy.name} hat dein Team vernichtet!$cReset")
         return true
     }
     return false

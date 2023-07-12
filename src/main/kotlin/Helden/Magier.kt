@@ -1,5 +1,9 @@
 package Helden
 
+import Utils.cGreen
+import Utils.cRed
+import Utils.cReset
+
 class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
 
     init {
@@ -23,7 +27,7 @@ class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
                            __/ |            
                           |___/  
              ${this.name}
-             HP: ${this.hp} | Schild: ${this.shield}
+             HP: $cRed${this.hp}$cReset | Schild: ${this.shield}
         ┌───────────────────────────────────────────────┐        
         │   [1] Feuersturm          [2] Hagelschauer    │
         │   [3] Heilen              [4] Schild          │
@@ -69,7 +73,7 @@ class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
     }
 
     override fun toString(): String {
-        return "Magier | Name: ${this.name} HP: ${this.hp}"
+        return "Magier | Name: ${this.name} HP: $cRed${this.hp}$cReset"
     }
 
     override fun attack(angriff: Int): Int {

@@ -1,5 +1,8 @@
 package Helden
 
+import Utils.cRed
+import Utils.cReset
+
 class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
     var focus = false
 
@@ -23,7 +26,7 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
              |____/ \___|_|  |___/\___|_|  |_|\_\___|_|   
             
              ${this.name}
-             HP: ${this.hp} | Schild: ${this.shield}
+             HP: $cRed${this.hp}$cReset | Schild: ${this.shield}
         ┌────────────────────────────────────────────────┐      
         │   [1] Hieb                [2] Tausend Dolche   │
         │   [3] Fokus               [4] Schild           │
@@ -70,7 +73,7 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
     }
 
     override fun toString(): String {
-        return "Berserker | Name: ${this.name} HP: ${this.hp}"
+        return "Berserker | Name: ${this.name} HP: $cRed${this.hp}$cReset"
     }
 
     override fun attack(angriff: Int): Int {

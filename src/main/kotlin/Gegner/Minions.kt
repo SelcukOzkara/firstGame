@@ -1,6 +1,9 @@
 package Gegner
 
 import Helden.Held
+import Utils.cGreen
+import Utils.cRed
+import Utils.cReset
 
 class Minions : Gegner(name = "", hp = 0) {
     init {
@@ -28,13 +31,13 @@ class Minions : Gegner(name = "", hp = 0) {
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (5..8).random()
                             println("""
-                                ${held.name} HP: ${held.hp}
+                                ${held.name} HP: $cRed${held.hp}$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
                             println("""
-                                ${held.name} hatte ein Schild!
+                                $cGreen${held.name} hatte ein Schild!$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else println("""
@@ -54,13 +57,13 @@ class Minions : Gegner(name = "", hp = 0) {
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (15..20).random()
                             println("""
-                                ${held.name} HP: ${held.hp}
+                                ${held.name} HP: $cRed${held.hp}$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
                             println("""
-                                ${held.name} hatte ein Schild!
+                                $cGreen${held.name} hatte ein Schild!$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else println("""
@@ -80,13 +83,13 @@ class Minions : Gegner(name = "", hp = 0) {
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (30..38).random()
                             println("""
-                                ${held.name} HP: ${held.hp}
+                                ${held.name} HP: $cRed${held.hp}$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
                             println("""
-                                ${held.name} hatte ein Schild!
+                                $cGreen${held.name} hatte ein Schild!$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else println("""
@@ -106,13 +109,13 @@ class Minions : Gegner(name = "", hp = 0) {
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= 60
                             println("""
-                                ${held.name} HP: ${held.hp}
+                                ${held.name} HP: $cRed${held.hp}$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
                             println("""
-                                ${held.name} hatte ein Schild!
+                                $cGreen${held.name} hatte ein Schild!$cReset
                             └──────────────────────────────────────────────────────────────┘
                             """.trimIndent())
                         } else println("""
