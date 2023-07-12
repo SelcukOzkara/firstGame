@@ -1,4 +1,4 @@
-class Ritter:Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
+class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
     var focus = false
 
     init {
@@ -8,9 +8,10 @@ class Ritter:Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPo
         this.damage = 0
     }
 
-    override fun aktion(): Int{
-        while (true){
-            println("""
+    override fun aktion(): Int {
+        while (true) {
+            println(
+                """
             
               _____  _ _   _            
              |  __ \(_) | | |           
@@ -27,32 +28,37 @@ class Ritter:Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPo
         │   [5] Beutel                                 │
         └──────────────────────────────────────────────┘
             Wähle aus:
-        """.trimIndent())
-            try{
+        """.trimIndent()
+            )
+            try {
                 val input = readln().toInt()
-                if (input !in 1 .. 5 ) throw Exception("")
+                if (input !in 1..5) throw Exception("")
 
-                when (input){
+                when (input) {
                     1 -> {
                         this.damage += attack(input)
                         return this.damage
                     }
+
                     2 -> {
                         this.damage += attack(input)
                         return this.damage
                     }
+
                     3 -> {
                         this.focus = true
                         return 0
                     }
+
                     4 -> {
                         this.shield = true
                         return 0
                     }
+
                     5 -> return -2
                 }
                 break
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 println("Bitte wähle aus einen Angriff aus!")
             }
         }
@@ -63,19 +69,19 @@ class Ritter:Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPo
         return "Ritter | Name: ${this.name} HP: ${this.hp}"
     }
 
-    override fun attack(angriff: Int): Int{
-        if (this.focus){
-            if (angriff == 1){
+    override fun attack(angriff: Int): Int {
+        if (this.focus) {
+            if (angriff == 1) {
                 this.focus = false
                 return (20..60).random() + 100
-            } else if (angriff == 2){
+            } else if (angriff == 2) {
                 this.focus = false
                 return (40..90).random() + 100
             }
         } else {
-            if (angriff == 1){
+            if (angriff == 1) {
                 return (20..60).random() + 100
-            } else if (angriff == 2){
+            } else if (angriff == 2) {
                 return (40..90).random() + 100
             }
         }

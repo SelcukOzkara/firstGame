@@ -1,12 +1,54 @@
-class Dragon: Gegner(name = "", hp = 100){
+class Dragon : Gegner(name = "", hp = 100) {
     var minions = false
-    var i = mutableListOf(1,1,1,1,2,2,2,2,3,3,3,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6)
+    var i = mutableListOf(
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+    )
+
     init {
         this.name = "Black Dragon"
         this.hp = 4000
     }
 
-    override fun attack(myTeam: MutableList<Held>, minion: Gegner, enemy: Dragon){
+    override fun attack(myTeam: MutableList<Held>, minion: Gegner, enemy: Dragon) {
         while (true) {
             var j = (0 until myTeam.size).random()
             if (myTeam[j].hp > 0) {
@@ -73,6 +115,7 @@ class Dragon: Gegner(name = "", hp = 100){
                         this.minions = true
                         println("${this.name} hat drei Minions beschworen.")
                         i.removeAll { it == 6 }
+                        break
                     }
                 }
             }

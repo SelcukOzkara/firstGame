@@ -99,11 +99,13 @@ fun createBeutel(): MutableList<Item> {
 fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon, minions: MutableList<Gegner>) {
     while (!death(myTeam, enemy)) {
         println("\nIn deinem Team leben noch:")
-        for (i in myTeam){
-            if (i.hp > 0){
-                println("""
+        for (i in myTeam) {
+            if (i.hp > 0) {
+                println(
+                    """
                 ${i.name} mit ${i.hp} HP
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
         }
         for (i in myTeam) {
@@ -138,21 +140,30 @@ fun playerRound(
         var check = 0
         var attack = myTeam[myTeam.indexOf(i)].aktion()
         if (attack == -1) {
-            println("""
+            println(
+                """
                 
                 ++++++++++++++++++++++++++++++++++++
                 ++++++++Alle wurden geheilt!++++++++
-            """.trimIndent())
+            """.trimIndent()
+            )
             myTeam.forEach {
-                if (it.hp > 0){
-                    it.hp += 50
-                    println("${it.name} | ${it.hp} HP")
+                if (it.hp > 0) {
+                    if (it.hp < it.maxHp){
+                        it.hp += 50
+                        if (it.hp > it.maxHp){
+                            it.hp = it.maxHp
+                        }
+                        println("${it.name} | ${it.hp} HP")
+                    }
                 }
             }
-            println("""
+            println(
+                """
                 ++++++++++++++++++++++++++++++++++++
                 
-            """.trimIndent())
+            """.trimIndent()
+            )
             break
         } else if (attack == -2) {
             while (true) {
@@ -173,10 +184,18 @@ fun playerRound(
                     when (input) {
                         1 -> {
                             if (myBeutel[0].anzahl <= 0) throw Exception("Du hast keinen Trank mehr!")
-                            myBeutel[0].anzahl -= 1
-                            i.hp += 50
-                            check = 1
-                            break
+                            if (i.hp < i.maxHp){
+                                myBeutel[0].anzahl -= 1
+                                i.hp += 50
+                                if (i.hp > i.maxHp){
+                                    i.hp = i.maxHp
+                                }
+                                check = 1
+                                break
+                            } else {
+                                println("Du hast volle HP!")
+                                break
+                            }
                         }
 
                         2 -> {
@@ -225,12 +244,16 @@ fun playerRound(
                         if (j.hp <= 0) {
                             j.hp = 0
                         }
-                        println("${j.name} wurde angegriffen und hat noch ${j.hp}")
+                        println("""
+                            
+                            ${j.name} wurde angegriffen und hat noch ${j.hp}
+                        ┌─────────────────────────────────────────────────────────────┐ 
+                        """.trimIndent())
                         minions.forEach {
-                            print("|$c.${it.name} hat: ${it.hp}HP| ")
+                            print("  |$c.${it.name} hat: ${it.hp}HP| ")
                             c++
                         }
-                        println()
+                        println("\n└─────────────────────────────────────────────────────────────┘")
                     }
                     if (minions[0].hp == 0 && minions[1].hp == 0 && minions[2].hp == 0) {
                         enemy.minions = false
@@ -245,13 +268,12 @@ fun playerRound(
                 break
             }
         }
-        break
     }
 }
 
 fun enemyRound(myTeam: MutableList<Held>, enemy: Dragon, minions: MutableList<Gegner>) {
-    minions.forEach { it.attack(myTeam,it,enemy) }
-    enemy.attack(myTeam,minions.random(),enemy)
+    minions.forEach { it.attack(myTeam, it, enemy) }
+    enemy.attack(myTeam, minions.random(), enemy)
 }
 
 fun death(myTeam: MutableList<Held>, enemy: Dragon): Boolean {

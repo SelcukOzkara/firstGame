@@ -1,4 +1,4 @@
-class Magier:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false){
+class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
 
     init {
         this.name = "Gandalf der Magier"
@@ -7,9 +7,10 @@ class Magier:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, isPoi
         this.damage = 0
     }
 
-    override fun aktion(): Int{
-        while (true){
-            println("""
+    override fun aktion(): Int {
+        while (true) {
+            println(
+                """
                 
               __  __             _           
              |  \/  |           (_)          
@@ -29,31 +30,36 @@ class Magier:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, isPoi
         └───────────────────────────────────────────────┘    
             
             Wählen Sie aus:
-        """.trimIndent())
-            try{
+        """.trimIndent()
+            )
+            try {
                 val input = readln().toInt()
-                if (input !in 1 .. 5 ) throw Exception("")
+                if (input !in 1..5) throw Exception("")
 
-                when (input){
+                when (input) {
                     1 -> {
                         this.damage = attack(input)
                         return this.damage
                     }
+
                     2 -> {
                         this.damage = attack(input)
                         return this.damage
                     }
+
                     3 -> {
                         return -1
                     }
+
                     4 -> {
                         this.shield = true
                         return 0
                     }
+
                     5 -> return -2
                 }
                 break
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 println("Bitte wähle aus einen Angriff aus!")
             }
         }
@@ -64,7 +70,7 @@ class Magier:Held(name = "",maxHp = 0, hp = 0, damage = 0, shield = false, isPoi
         return "Magier | Name: ${this.name} HP: ${this.hp}"
     }
 
-    override fun attack(angriff: Int): Int{
+    override fun attack(angriff: Int): Int {
         return if (angriff == 1) (40..60).random()
         else (40..100).random()
     }

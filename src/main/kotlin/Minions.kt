@@ -15,50 +15,106 @@ class Minions : Gegner(name = "", hp = 0) {
                 when (j) {
                     1 -> {
                         val held = myTeam.random()
-                        println("${minion.name} führt den Angriff 'Schubser' aus.")
+                        println("""
+                            
+                            (ง ͠ ᵒ̌ Дᵒ̌ )▬▬ι═══════ﺤ
+                        ┌──────────────────────────────────────────────────────────────┐ 
+                         ${minion.name} führt den Angriff 'Schubser' aus.
+                        """.trimIndent())
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (5..8).random()
-                            println("${held.name} HP: ${held.hp}")
+                            println("""
+                                ${held.name} HP: ${held.hp}
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
-                            println("${held.name} hatte ein Schild!")
-                        } else println("Keinen getroffen...")
+                            println("""
+                                ${held.name} hatte ein Schild!
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
+                        } else println("""
+                                Keinen getroffen...
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                     }
 
                     2 -> {
                         val held = myTeam.random()
-                        println("${minion.name} führt den Angriff 'Stockschlag' aus.")
+                        println("""
+                            
+                            (ง ͠ ᵒ̌ Дᵒ̌ )▬▬ι═══════ﺤ
+                        ┌──────────────────────────────────────────────────────────────┐ 
+                         ${minion.name} führt den Angriff 'Stockschlag' aus.
+                        """.trimIndent())
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (15..20).random()
-                            println("${held.name} HP: ${held.hp}")
+                            println("""
+                                ${held.name} HP: ${held.hp}
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
-                            println("${held.name} hatte ein Schild!")
-                        } else println("Keinen getroffen...")
+                            println("""
+                                ${held.name} hatte ein Schild!
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
+                        } else println("""
+                                Keinen getroffen...
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                     }
 
                     3 -> {
                         val held = myTeam.random()
-                        println("${minion.name} führt den Angriff 'Peitsche' aus.")
+                        println("""
+                            
+                            (ง ͠ ᵒ̌ Дᵒ̌ )▬▬ι═══════ﺤ
+                        ┌──────────────────────────────────────────────────────────────┐ 
+                         ${minion.name} führt den Angriff 'Stockschlag' aus.
+                        """.trimIndent())
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (30..38).random()
-                            println("${held.name} HP: ${held.hp}")
+                            println("""
+                                ${held.name} HP: ${held.hp}
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
-                            println("${held.name} hatte ein Schild!")
-                        } else println("Keinen getroffen...")
+                            println("""
+                                ${held.name} hatte ein Schild!
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
+                        } else println("""
+                                Keinen getroffen...
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                     }
 
                     4 -> {
                         val held = myTeam.random()
-                        println("${minion.name} führt den Angriff 'Steinwurf' aus.")
+                        println("""
+                            
+                            (ง ͠ ᵒ̌ Дᵒ̌ )▬▬ι═══════ﺤ
+                        ┌──────────────────────────────────────────────────────────────┐ 
+                         ${minion.name} führt den Angriff 'Steinwurf' aus.
+                        """.trimIndent())
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= 60
-                            println("${held.name} HP: ${held.hp}")
+                            println("""
+                                ${held.name} HP: ${held.hp}
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                         } else if (held.shield) {
                             held.shield = false
-                            println("${held.name} hatte ein Schild!")
-                        } else println("Keinen getroffen...")
+                            println("""
+                                ${held.name} hatte ein Schild!
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
+                        } else println("""
+                                Keinen getroffen...
+                            └──────────────────────────────────────────────────────────────┘
+                            """.trimIndent())
                     }
                 }
             }
