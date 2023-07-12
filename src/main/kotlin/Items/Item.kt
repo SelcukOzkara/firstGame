@@ -1,3 +1,5 @@
+package Items
+
 open class Item (var name: String, var beschreibung: String, var anzahl: Int) {
 
     override fun toString(): String {

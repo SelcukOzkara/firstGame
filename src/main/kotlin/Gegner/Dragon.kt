@@ -1,3 +1,7 @@
+package Gegner
+
+import Helden.Held
+
 class Dragon : Gegner(name = "", hp = 100) {
     var minions = false
     var i = mutableListOf(

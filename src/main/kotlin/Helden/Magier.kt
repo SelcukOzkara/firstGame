@@ -1,3 +1,5 @@
+package Helden
+
 class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
 
     init {

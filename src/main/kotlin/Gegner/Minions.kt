@@ -1,3 +1,7 @@
+package Gegner
+
+import Helden.Held
+
 class Minions : Gegner(name = "", hp = 0) {
     init {
         this.name = "Minion"

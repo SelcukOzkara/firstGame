@@ -1,3 +1,7 @@
+package Gegner
+
+import Helden.Held
+
 open class Gegner(var name: String, var hp: Int) {
 
     open fun attack(myTeam: MutableList<Held>, minion: Gegner, enemy: Dragon) {

@@ -1,6 +1,9 @@
+import Gegner.Dragon
+import Utils.*
+
 /* TODO:
     3) Konsolenausgaben anpassen
-    4) Falls Zeit -> Dragon mehrere Leben geben -> Stage 1-3
+    4) Falls Zeit -> Gegner.Dragon mehrere Leben geben -> Stage 1-3
  */
 
 fun main() {
