@@ -5,6 +5,7 @@ import Utils.cGreen
 import Utils.cRed
 import Utils.cReset
 
+// Erbt von der Oberklasse Gegner
 class Minions : Gegner(name = "", hp = 0) {
     init {
         this.name = "Minion"
@@ -15,6 +16,7 @@ class Minions : Gegner(name = "", hp = 0) {
         return "${this.name} + ${this.hp}"
     }
 
+    //Ausgaben und zufälliger Angriff der Minions | ASCII Art von: https://emojicombos.com/sword-ascii
     override fun attack(myTeam: MutableList<Held>, minion: Gegner, enemy: Dragon) {
         if (enemy.minions) {
             val j = mutableListOf(1, 1, 1, 1, 2, 2, 2, 3, 3, 4).random()

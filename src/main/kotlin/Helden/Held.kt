@@ -1,5 +1,6 @@
 package Helden
 
+//Offene Oberklasse der Helden
 open class Held(var name: String,var maxHp: Int, var hp: Int, var damage: Int, var shield: Boolean, var isPoison: Boolean){
 
     open fun attack(angriff: Int): Int{

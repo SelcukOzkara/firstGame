@@ -5,6 +5,7 @@ import Utils.cGreen
 import Utils.cRed
 import Utils.cReset
 
+// Erbt von der Oberklasse Gegner
 class Dragon : Gegner(name = "", hp = 100) {
     var minions = false
     var i = mutableListOf(
@@ -51,6 +52,7 @@ class Dragon : Gegner(name = "", hp = 100) {
         this.hp = 4000
     }
 
+    //Ausgaben und zufälliger Angriff des Drachen | ASCII Arts von: https://emojicombos.com/dragon-ascii-art
     override fun attack(myTeam: MutableList<Held>, minion: Gegner, enemy: Dragon) {
         while (true) {
             var j = (0 until myTeam.size).random()

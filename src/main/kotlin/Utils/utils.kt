@@ -14,7 +14,9 @@ import Items.Reviv
 var cReset = "\u001B[0m"
 var cRed = "\u001B[31m"
 var cGreen = "\u001B[32m"
+var cYellow = "\u001B[33m"
 
+//Ausgabe vom ASCII Code | Generiert über http://www.network-science.de/ascii/
 fun startText() {
     println(
         """
@@ -32,6 +34,7 @@ fun startText() {
     )
 }
 
+// Funktion für die Auswahl des Teams von Helden
 fun chooseTeam(): MutableList<Held> {
     val helden = mutableListOf<Held>()
 
@@ -103,14 +106,17 @@ fun chooseTeam(): MutableList<Held> {
     return helden
 }
 
+// Funktion zur Erstellung der Minions
 fun createMinions(): MutableList<Gegner> {
     return mutableListOf(Minions(), Minions(), Minions())
 }
 
+// Funktion zur Erstellung des Beutels/Inventars mit den vorgegebenen Tränken
 fun createBeutel(): MutableList<Item> {
     return mutableListOf(Heal(), Reviv())
 }
 
+// Funktion, um den Kampf zu starten, Aufruf verschiedenen Funktionen
 fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon, minions: MutableList<Gegner>) {
     while (!death(myTeam, enemy)) {
         println("\n${cGreen}In deinem Team leben noch:$cReset")
@@ -136,6 +142,7 @@ fun battle(myTeam: MutableList<Held>, myBeutel: MutableList<Item>, enemy: Dragon
     }
 }
 
+// Funktion überprüft ob Held Vergiftet ist
 fun checkPoison(i: Held) {
     if (i.isPoison && i.hp > (i.maxHp * 0.2).toInt()) {
         i.hp -= (i.maxHp * 0.1).toInt()
@@ -144,6 +151,7 @@ fun checkPoison(i: Held) {
     }
 }
 
+// Funktion für die Aktionen der Helden
 fun playerRound(
     myTeam: MutableList<Held>,
     myBeutel: MutableList<Item>,
@@ -289,11 +297,13 @@ fun playerRound(
     }
 }
 
+// Funktion für die Aktionen der Gegner (Minions & Drachen)
 fun enemyRound(myTeam: MutableList<Held>, enemy: Dragon, minions: MutableList<Gegner>) {
     minions.forEach { it.attack(myTeam, it, enemy) }
     enemy.attack(myTeam, minions.random(), enemy)
 }
 
+// Funktion zur Überpüfung, ob die Helden oder der Drache besiegt wurde.
 fun death(myTeam: MutableList<Held>, enemy: Dragon): Boolean {
     var dCount = 0
     for (i in myTeam)

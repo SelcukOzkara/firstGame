@@ -2,7 +2,11 @@ package Helden
 
 import Utils.cRed
 import Utils.cReset
+import Utils.cYellow
 
+/* Übernahme durch die Mutterklasse mit gesetzten Default werten, welche durch den Init Block
+die jeweiligen Werte erhalten für die Heldenklasse
+ */
 class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
     var focus = false
 
@@ -13,6 +17,7 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
         this.damage = 0
     }
 
+    // die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden
     override fun aktion(): Int {
         while (true) {
             println(
@@ -31,7 +36,7 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
         │   [1] Hieb                [2] Tausend Dolche   │
         │   [3] Fokus               [4] Schild           │
         │                                                │
-        │   [5] Beutel                                   │
+        │   [5] ${cYellow}Beutel$cReset                                   │
         └────────────────────────────────────────────────┘
             
             Wählen Sie aus:
@@ -76,6 +81,7 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
         return "Berserker | Name: ${this.name} HP: $cRed${this.hp}$cReset"
     }
 
+    //Gibt je nach Auswahl des Users einen Wert zurück
     override fun attack(angriff: Int): Int {
         if (this.focus) {
             if (angriff == 1) {

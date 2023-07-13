@@ -3,7 +3,11 @@ package Helden
 import Utils.cGreen
 import Utils.cRed
 import Utils.cReset
+import Utils.cYellow
 
+/* Übernahme durch die Mutterklasse mit gesetzten Default werten, welche durch den Init Block
+die jeweiligen Werte erhalten für die Heldenklasse
+ */
 class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
     var focus = false
 
@@ -14,6 +18,7 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         this.damage = 0
     }
 
+    // die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden
     override fun aktion(): Int {
         while (true) {
             println(
@@ -31,7 +36,7 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         │   [1] Schwerthieb         [2] Spiralschlag   │
         │   [3] Fokus               [4] Schild         │
         │                                              │
-        │   [5] Beutel                                 │
+        │   [5] ${cYellow}Beutel$cReset                                 │
         └──────────────────────────────────────────────┘
             Wähle aus:
         """.trimIndent()
@@ -75,6 +80,7 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         return "Ritter | Name: ${this.name} HP: $cRed${this.hp}$cReset"
     }
 
+    //Gibt je nach Auswahl des Users einen Wert zurück
     override fun attack(angriff: Int): Int {
         if (this.focus) {
             if (angriff == 1) {

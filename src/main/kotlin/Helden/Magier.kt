@@ -3,7 +3,11 @@ package Helden
 import Utils.cGreen
 import Utils.cRed
 import Utils.cReset
+import Utils.cYellow
 
+/* Übernahme durch die Mutterklasse mit gesetzten Default werten, welche durch den Init Block
+die jeweiligen Werte erhalten für die Heldenklasse
+ */
 class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, isPoison = false) {
 
     init {
@@ -13,6 +17,7 @@ class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         this.damage = 0
     }
 
+    // die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden
     override fun aktion(): Int {
         while (true) {
             println(
@@ -32,7 +37,7 @@ class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         │   [1] Feuersturm          [2] Hagelschauer    │
         │   [3] Heilen              [4] Schild          │
         │                                               │
-        │   [5] Beutel                                  │
+        │   [5] ${cYellow}Beutel$cReset                                  │
         └───────────────────────────────────────────────┘    
             
             Wählen Sie aus:
@@ -76,6 +81,7 @@ class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         return "Magier | Name: ${this.name} HP: $cRed${this.hp}$cReset"
     }
 
+    //Gibt je nach Auswahl des Users einen Wert zurück
     override fun attack(angriff: Int): Int {
         return if (angriff == 1) (40..60).random()
         else (40..100).random()
