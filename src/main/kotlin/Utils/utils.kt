@@ -9,7 +9,8 @@ import Helden.Magier
 import Helden.Ritter
 import Items.Heal
 import Items.Item
-import Items.Reviv
+import Items.Revive
+
 
 var cReset = "\u001B[0m"
 var cRed = "\u001B[31m"
@@ -113,7 +114,7 @@ fun createMinions(): MutableList<Gegner> {
 
 // Funktion zur Erstellung des Beutels/Inventars mit den vorgegebenen Tränken
 fun createBeutel(): MutableList<Item> {
-    return mutableListOf(Heal(), Reviv())
+    return mutableListOf(Heal(), Revive())
 }
 
 // Funktion, um den Kampf zu starten, Aufruf verschiedenen Funktionen

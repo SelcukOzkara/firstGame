@@ -1,4 +1,4 @@
-<img alt="Logo.png" src="Logo.png"/>
+<img alt="Logo.png" src="img/Logo.png"/>
 
 ---
 Hierbei handelt sich um ein kleines Spiel, 
@@ -22,12 +22,22 @@ bis du den Drachen besiegst oder der Drache dein Team vernichtet.
 ### <span style="color:gold"><center>Klassendiagramme</center></span>
 
 ---
-<details><summary>Klassen der Helden</summary>
-<br>Die einzelnen Helden erben von der Oberklasse Held.
-<img alt="Klassendiagramm_Held.png" src="Klassendiagramm_Held.png"/>  </details>
-<details><summary>Klassen der Gegner</summary>
-<br>Die einzelnen Gegner erben von der Oberklasse Gegner.
-<img alt="Klassendiagramm_Gegner.png" src="Klassendiagramm_Gegner.png"/> </details>
+<details>
+<summary>Klassen der Helden</summary>
+Die einzelnen Helden erben von der Oberklasse Held.
+<img alt="Klassendiagramm_Held.png" src="img/Klassendiagramm_Held.png"/>
+</details>
+
+<details>
+<summary>Klassen der Gegner</summary>
+Die einzelnen Gegner erben von der Oberklasse Gegner.
+<img alt="Klassendiagramm_Gegner.png" src="img/Klassendiagramm_Gegner.png"/> 
+</details>
+<details>
+<summary>Klassen der Items</summary>
+Die einzelnen Tränke erben von der Oberklasse Item.
+<img alt="Klassendiagramm_Items.png" src="img/Klassendiagramm_Items.png"/>
+</details>
 
 ### <span style="color:gold"><center>Skills & Stats</center></span>
 
