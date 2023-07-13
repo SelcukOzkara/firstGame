@@ -80,7 +80,7 @@ class Minions : Gegner(name = "", hp = 0) {
                             
                             (ง ͠ ᵒ̌ Дᵒ̌ )▬▬ι═══════ﺤ
                         ┌──────────────────────────────────────────────────────────────┐ 
-                         ${minion.name} führt den Angriff 'Stockschlag' aus.
+                         ${minion.name} führt den Angriff 'Peitsche' aus.
                         """.trimIndent())
                         if (held.hp > 0 && !held.shield) {
                             held.hp -= (30..38).random()

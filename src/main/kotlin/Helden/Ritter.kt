@@ -15,7 +15,7 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         this.name = "Der dunkle Ritter"
         this.maxHp = 150
         this.hp = maxHp
-        this.damage = 0
+        this.damage = 50
     }
 
     /* die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden

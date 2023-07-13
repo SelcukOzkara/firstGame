@@ -14,7 +14,7 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
         this.name = "Bero der Berserker"
         this.maxHp = 110
         this.hp = maxHp
-        this.damage = 0
+        this.damage = 60
     }
 
     /* die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden

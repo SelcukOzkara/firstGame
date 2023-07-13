@@ -14,7 +14,7 @@ class Magier : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         this.name = "Gandalf der Magier"
         this.maxHp = 100
         this.hp = maxHp
-        this.damage = 0
+        this.damage = 30
     }
 
     /* die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden
