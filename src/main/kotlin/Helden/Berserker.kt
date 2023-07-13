@@ -95,9 +95,9 @@ class Berserker : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false,
             }
         } else {
             if (angriff == 1) {
-                return (20..60).random() + 100
+                return (20..60).random()
             } else if (angriff == 2) {
-                return (40..90).random() + 100
+                return (40..90).random()
             }
         }
         return 0

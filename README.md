@@ -71,9 +71,9 @@ bis du den Drachen besiegst oder der Drache dein Team vernichtet.
 
 | Char      | HP  | Damage | 
 |-----------|-----|--------|
-| Berserker | 110 | 60     |
-| Ritter    | 150 | 50     |
-| Magier    | 100 | 30     |
+| Berserker | 110 | 60-190 |
+| Ritter    | 150 | 20-160 |
+| Magier    | 100 | 30-90  |
 
 
 ### <span style="color:red">Gegner</span>
