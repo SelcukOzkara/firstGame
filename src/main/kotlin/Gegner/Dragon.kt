@@ -253,4 +253,9 @@ class Dragon : Gegner(name = "", hp = 100) {
             }
         }
     }
+
+    override fun toString(): String {
+        return "${this.name} + ${this.hp}"
+    }
 }
+

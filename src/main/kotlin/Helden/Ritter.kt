@@ -18,7 +18,9 @@ class Ritter : Held(name = "", maxHp = 0, hp = 0, damage = 0, shield = false, is
         this.damage = 0
     }
 
-    // die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden
+    /* die Methode Aktion beinhaltet das Auswahlmenü für die jeweiligen Helden
+          Ausgabe vom ASCII Code | Generiert über http://www.network-science.de/ascii/
+        */
     override fun aktion(): Int {
         while (true) {
             println(
